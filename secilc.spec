@@ -12,7 +12,7 @@ URL:            http://userspace.selinuxproject.org/trac/wiki/CilDesign
 Source0:        http://bitbucket.org/jwcarter/secilc/get/%{shortcommit}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  bison gcc >= 4.5.1 libsepol-static >= 2.1.4 lcov >= 1.9 flex >= 2.5.35
+BuildRequires:  bison gcc >= 4.5.1 libsepol-static >= 2.1.4 lcov >= 1.9 flex >= 2.5.35 make coreutils
 
 %description
 The SELinux CIL Compiler is a compiler that converts the CIL language as
@@ -26,19 +26,19 @@ for more information about the goals and features on the CIL language.
 
 
 %build
-make clean
-make LIBDIR="%{_libdir}" CFLAGS="%{optflags}"
+/usr/bin/make clean
+/usr/bin/make LIBDIR="%{_libdir}" CFLAGS="%{optflags}"
 
 
 %install
-rm -rf ${RPM_BUILD_ROOT}
+/usr/bin/rm -rf ${RPM_BUILD_ROOT}
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_bindir}
-cp -p secilc ${RPM_BUILD_ROOT}%{_bindir}/
+/usr/bin/cp -p secilc ${RPM_BUILD_ROOT}%{_bindir}/
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}
-cp COPYING ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}/
+/usr/bin/cp COPYING ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}/
 
 %clean
-rm -rf ${RPM_BUILD_ROOT}
+/usr/bin/rm -rf ${RPM_BUILD_ROOT}
 
 
 %files
