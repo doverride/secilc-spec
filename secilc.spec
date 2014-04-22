@@ -1,4 +1,4 @@
-%global commit 4203d31701471b14b520bfab5ce95577d9970676
+%global commit c50b6ef4fcfdc9b2f86a8d0d99d2757fc030f2cc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global checkout %(c=%{commit}; echo ${c:0:12})
 
@@ -49,5 +49,8 @@ for more information about the goals and features on the CIL language.
 
 
 %changelog
+* Tue Apr 22 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.2gitc50b6ef
+- Possible fix for boolean issues
+
 * Sun Apr 20 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.1git4203d31
 - Initial SELinux Common Intermediate Language (CIL) Compiler RPM spec file
