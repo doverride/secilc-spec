@@ -4,7 +4,7 @@
 
 Name:           secilc
 Version:        0
-Release:        0.1git%{shortcommit}%{?dist}
+Release:        0.3git%{shortcommit}%{?dist}
 Summary:        SELinux Common Intermediate Language (CIL) Compiler
 
 License:        BSD
@@ -49,6 +49,9 @@ for more information about the goals and features on the CIL language.
 
 
 %changelog
+* Tue Apr 22 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.3gitc50b6ef
+- Version bump
+
 * Tue Apr 22 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.2gitc50b6ef
 - Possible fix for boolean issues
 
