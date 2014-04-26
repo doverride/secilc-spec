@@ -1,10 +1,10 @@
-%global commit 78897153e5ee01315b4f831018db991b8d7187b7
+%global commit e3b35c0a18037738a3b196b9bae59d47986cd945
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global checkout %(c=%{commit}; echo ${c:0:12})
 
 Name:           secilc
 Version:        0
-Release:        0.4git%{shortcommit}%{?dist}
+Release:        0.5git%{shortcommit}%{?dist}
 Summary:        SELinux Common Intermediate Language (CIL) Compiler
 
 License:        BSD
@@ -49,6 +49,10 @@ for more information about the goals and features on the CIL language.
 
 
 %changelog
+* Sat Apr 26 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.5gite3b35c0
+- Various clean ups
+- Support for mls true or false statement
+
 * Wed Apr 23 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.4git7889715
 - Possible other fix for boolean issue
 
