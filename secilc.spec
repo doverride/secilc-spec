@@ -1,4 +1,4 @@
-%global commit e3b35c0a18037738a3b196b9bae59d47986cd945
+%global commit e44f9daa4c3cfbad59bbb76ad8e56fa7ba058666
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global checkout %(c=%{commit}; echo ${c:0:12})
 
@@ -12,13 +12,26 @@ URL:            http://userspace.selinuxproject.org/trac/wiki/CilDesign
 Source0:        http://bitbucket.org/jwcarter/secilc/get/%{shortcommit}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  bison gcc >= 4.5.1 libsepol-static >= 2.1.4 lcov >= 1.9 flex >= 2.5.35 make coreutils
+BuildRequires:  bison gcc >= 4.5.1 libsepol-static >= 2.1.4 lcov >= 1.9 flex >= 2.5.35 make coreutils xmlto dblatex
 
 %description
 The SELinux CIL Compiler is a compiler that converts the CIL language as
 described on the CIL design wiki into a policy.conf file. Please see the
 CIL Design Wiki at http://userspace.selinuxproject.org/trac/wiki/CilDesign
 for more information about the goals and features on the CIL language.
+
+%package reference-guide
+Summary:        SELinux Common Intermediate Language (CIL) Reference Guide
+Group:          System Environment/Base
+
+BuildArch:      noarch
+
+%description reference-guide
+SELinux Common Intermediate Language (CIL) Docbook Reference Guide
+
+%files reference-guide
+%defattr(-,root,root)
+%doc %{_usr}/share/doc/%{name}/pdf/
 
 
 %prep
@@ -28,7 +41,7 @@ for more information about the goals and features on the CIL language.
 %build
 /usr/bin/make clean
 /usr/bin/make LIBDIR="%{_libdir}" CFLAGS="%{optflags}"
-
+/usr/bin/make -C docs pdf
 
 %install
 /usr/bin/rm -rf ${RPM_BUILD_ROOT}
@@ -36,6 +49,9 @@ for more information about the goals and features on the CIL language.
 /usr/bin/cp -p secilc ${RPM_BUILD_ROOT}%{_bindir}/
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}
 /usr/bin/cp COPYING ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}/
+
+%{__mkdir} -p ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}/pdf/
+/usr/bin/cp docs/pdf/CIL_Reference_Guide.pdf ${RPM_BUILD_ROOT}%{_usr}/share/doc/%{name}/pdf/
 
 %clean
 /usr/bin/rm -rf ${RPM_BUILD_ROOT}
@@ -49,6 +65,9 @@ for more information about the goals and features on the CIL language.
 
 
 %changelog
+* Thu May 15 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.6gite44f9da
+- Update to upstream
+
 * Sat Apr 26 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.5gite3b35c0
 - Various clean ups
 - Support for mls true or false statement
