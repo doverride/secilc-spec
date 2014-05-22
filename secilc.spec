@@ -1,10 +1,10 @@
-%global commit e44f9daa4c3cfbad59bbb76ad8e56fa7ba058666
+%global commit 994905f9ed3743c08cf455009fe088f06c1e0e5e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global checkout %(c=%{commit}; echo ${c:0:12})
 
 Name:           secilc
 Version:        0
-Release:        0.5git%{shortcommit}%{?dist}
+Release:        0.7git%{shortcommit}%{?dist}
 Summary:        SELinux Common Intermediate Language (CIL) Compiler
 
 License:        BSD
@@ -65,6 +65,9 @@ SELinux Common Intermediate Language (CIL) Docbook Reference Guide
 
 
 %changelog
+* Thu May 22 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.7git994905f
+- Update to upstream
+
 * Thu May 15 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.6gite44f9da
 - Update to upstream
 
