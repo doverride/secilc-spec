@@ -1,15 +1,14 @@
-%global commit 7427f48c5f53fc09aa54cca1210397628b5d6dfe
+%global commit 2a1fe5d7a589a20efd49b2b8e92a1a30f2dead11
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global checkout %(c=%{commit}; echo ${c:0:12})
 
 Name:           secilc
 Version:        0
-Release:        0.10git%{shortcommit}%{?dist}
+Release:        0.11git%{shortcommit}%{?dist}
 Summary:        SELinux Common Intermediate Language (CIL) Compiler
 
 License:        BSD
-URL:            http://userspace.selinuxproject.org/trac/wiki/CilDesign
-Source0:        http://bitbucket.org/jwcarter/secilc/get/%{shortcommit}.tar.gz
+URL:            http://github.com/SELinuxProject/cil/wiki/
+Source0:        https://github.com/SELinuxProject/cil/archive/%{commit}/cil-%{commit}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  bison gcc >= 4.5.1 libsepol-static >= 2.1.4 lcov >= 1.9 flex >= 2.5.35 make coreutils xmlto dblatex
@@ -35,7 +34,7 @@ SELinux Common Intermediate Language (CIL) Docbook Reference Guide
 
 
 %prep
-%setup -qn jwcarter-secilc-%{checkout}
+%setup -qn cil-%{commit}
 
 
 %build
@@ -65,6 +64,9 @@ SELinux Common Intermediate Language (CIL) Docbook Reference Guide
 
 
 %changelog
+* Fri Jul 11 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.11git2a1fe5d
+- Update to upstream
+
 * Wed Jul 9 2014 "Dominick Grift <dac.override@gmail.com>" - 0-0.10git7427f48
 - Update to upstream
 
